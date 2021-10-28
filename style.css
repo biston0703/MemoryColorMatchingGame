@@ -1,0 +1,73 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+.dot-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.row {
+    width:100%;
+}
+
+input {
+    appearance: none;
+}
+
+.dot {
+    cursor: pointer;
+    height: 4rem;
+    width: 4rem;
+    background-color: #888;
+    border-style: none;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.dot:hover {
+  background-color: #999;
+}
+
+.blue:checked {
+    background-color: #03a3f1;
+}
+
+.pink:checked {
+    background-color: #d229a0;
+}
+
+.purple:checked {
+    background-color: #6802a1;
+}
+
+.turquoise:checked {
+    background-color: #00a476;
+}
+
+.transparent {
+    background-color: #0000;
+    cursor: auto;
+}
+
+.transparent:hover {
+    background-color: #0000;
+}
