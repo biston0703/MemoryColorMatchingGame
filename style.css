@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+
 *,
 *:before,
 *:after {
@@ -40,7 +42,7 @@ input {
     border-style: none;
     border-radius: 50%;
     display: inline-block;
-    margin: 0.5rem;
+    margin: 0.3rem;
 }
 
 .dot:hover {
@@ -64,10 +66,86 @@ input {
 }
 
 .transparent {
+    display: inline-block;
     background-color: #0000;
     cursor: auto;
+    height: 4rem;
+    width: 4rem;
+    margin: 0.3rem;
 }
 
 .transparent:hover {
     background-color: #0000;
+}
+
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 36px;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 1000;
+    color: #c1c1c1;
+    font-family: 'Comfortaa', cursive;
+    text-shadow: 3px 3px 10px #222;
+}
+
+.message button {
+    cursor: pointer;
+    height: 7rem;
+    width: 7rem;
+    font-size: 25px;
+    background-color: #888;
+    color: #c1c1c1;
+    border-style: none;
+    border-radius: 50%;
+    margin: 0.5rem;
+    text-transform: uppercase;
+    font-family: 'Comfortaa', cursive;
+    box-shadow: 3px 3px 10px #222;
+}
+
+.message button:hover {
+  background-color: #999;
+}
+
+@media screen and (max-width: 767px) {
+	.dot, .transparent {
+    height: 3rem;
+    width: 3rem;
+    margin: 0.2rem;
+	}
+
+  .message {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .dot, .transparent {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: 0.15rem;
+	}
+
+  .message {
+    font-size: 24px;
+  }
+
+  .message button {
+    height: 6rem;
+    width: 6rem;
+    font-size: 24px;
+    margin: 0.4rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .dot, .transparent {
+    height: 2rem;
+    width: 2rem;
+    margin: 0.1rem;
+	}
 }
