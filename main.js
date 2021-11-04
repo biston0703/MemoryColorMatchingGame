@@ -1,5 +1,6 @@
 const $table = document.querySelector('.dot-field');
 const $dots = document.getElementsByTagName('input');
+const $colorDots = document.getElementsByClassName('dot');
 const colors = {
   1: 'blue',
   2: 'pink',
@@ -11,6 +12,26 @@ const checkedDots = [];
 const transparentDots = [];
 const addRandomColor = function() {
   this.classList.toggle(randomColor[this.id]);
+}
+
+function removeDisabledAttr($objects) {
+  setTimeout(function(){
+    for (var i = 0; i < $objects.length; i++) {
+      $objects[i].removeAttribute('disabled');
+    }
+  }, 1000);
+}
+
+function hideMatchedDots(array) {
+  setTimeout(function(){
+    while (array.length > 0) {
+      $dots[array[0]].removeAttribute('class');
+      $dots[array[0]].classList.add('transparent');
+      $dots[array[0]].setAttribute('disabled', true);
+      transparentDots.push(array[0]);
+      array.shift();
+    }
+  }, 1000);
 }
 
 function createElement(tag, className, type) {
@@ -39,7 +60,7 @@ function finalMessage($table, win) {
     $table.appendChild($message);
     $message.appendChild($text);
     $message.appendChild($playAgainButton);
-  }, 700);
+  }, 1000);
 }
 
 function checkOutColors(array) {
@@ -80,40 +101,11 @@ function createPlayingField($table) {
           }
         }
 
-        setTimeout(function(){
-          let $colorDots = document.getElementsByClassName('dot');
-          for (var g = 0; g < $colorDots.length; g++) {
-            $colorDots[g].removeAttribute('disabled');
-          }
-        }, 500);
-
-        // while ($dots.length > 0) {
-        //   if (($dots[0] != checkedDots[0]) && ($dots[0] != checkedDots[1])) {
-        //     $dots[0].setAttribute('disabled', true);
-        //   }
-        // }
-        //
-        // setTimeout(function(){
-        //   let $colorDots = document.getElementsByClassName('dot');
-        //   while ($colorDots.length > 0) {
-        //     $colorDots[0].removeAttribute('disabled');
-        //   }
-        // }, 500);
+        removeDisabledAttr($colorDots);
 
         if (checkedDots[0] != checkedDots[1]
           && $dots[checkedDots[0]].className == $dots[checkedDots[1]].className) {
-          setTimeout(function(){
-            $dots[checkedDots[0]].removeAttribute('class');
-            $dots[checkedDots[1]].removeAttribute('class');
-            $dots[checkedDots[0]].classList.add('transparent');
-            $dots[checkedDots[1]].classList.add('transparent');
-            $dots[checkedDots[0]].setAttribute('disabled', true);
-            $dots[checkedDots[1]].setAttribute('disabled', true);
-            transparentDots.push(checkedDots[0]);
-            transparentDots.push(checkedDots[1]);
-            checkedDots.shift();
-            checkedDots.shift();
-          }, 500);
+            hideMatchedDots(checkedDots);
         } else {
           setTimeout(function(){
             $dots[checkedDots[0]].removeAttribute('class');
@@ -122,7 +114,7 @@ function createPlayingField($table) {
             $dots[checkedDots[1]].classList.add('dot');
             checkedDots.shift();
             checkedDots.shift();
-          }, 500);
+          }, 400);
         }
       }
       console.log(checkedDots);
