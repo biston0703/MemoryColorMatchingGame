@@ -14,26 +14,6 @@ const addRandomColor = function() {
   this.classList.toggle(randomColor[this.id]);
 }
 
-function removeDisabledAttr($objects) {
-  setTimeout(function(){
-    for (var i = 0; i < $objects.length; i++) {
-      $objects[i].removeAttribute('disabled');
-    }
-  }, 1000);
-}
-
-function hideMatchedDots(array) {
-  setTimeout(function(){
-    while (array.length > 0) {
-      $dots[array[0]].removeAttribute('class');
-      $dots[array[0]].classList.add('transparent');
-      $dots[array[0]].setAttribute('disabled', true);
-      transparentDots.push(array[0]);
-      array.shift();
-    }
-  }, 1000);
-}
-
 function createElement(tag, className, type) {
   const $tag = document.createElement(tag);
   if (className) {
@@ -45,22 +25,57 @@ function createElement(tag, className, type) {
   return $tag;
 }
 
+function removeDisabledAttr($objects) {
+  setTimeout(function(){
+    for (var i = 0; i < $objects.length; i++) {
+      $objects[i].removeAttribute('disabled');
+    }
+  }, 400);
+}
+
+function hideMatchedDots(array) {
+  setTimeout(function(){
+    while (array.length > 0) {
+      $dots[array[0]].removeAttribute('class');
+      $dots[array[0]].classList.add('transparent');
+      $dots[array[0]].setAttribute('disabled', true);
+      transparentDots.push(array[0]);
+      array.shift();
+    }
+  }, 400);
+}
+
+function startMessage($table) {
+  let $message = createElement('div', 'message');
+  let $text = createElement('p');
+  $message.classList.add('start');
+  $text.innerHTML = 'Click any two dots.<br>If they have<br>the same color,<br>they disappear.<br>Otherwise, dots revert<br>to grey color.<br>Try to remove all the dots!';
+  let $playButton = createElement('button');
+  $playButton.innerHTML = 'Play';
+  $playButton.setAttribute('onClick', 'createPlayingField($table);');
+  $table.appendChild($message);
+  $message.appendChild($text);
+  $message.appendChild($playButton);
+
+}
+
 function finalMessage($table, win) {
-  const $message = createElement('div', 'message');
-  const $text = createElement('p');
-        if (win == true) {
-          $text.innerHTML = 'Turned out good!';
-        } else {
-          $text.innerHTML = 'No matches :(';
-        }
-  const $playAgainButton = createElement('button');
+  let $message = createElement('div', 'message');
+  let $text = createElement('p');
+  $message.classList.add('final');
+  if (win == true) {
+    $text.innerHTML = 'Turned out good!';
+  } else {
+    $text.innerHTML = 'No matches :(';
+  }
+  let $playAgainButton = createElement('button');
         $playAgainButton.setAttribute('onClick', 'window.location.reload();');
-        $playAgainButton.innerHTML = 'play again';
+        $playAgainButton.innerHTML = 'Play again';
   setTimeout(function(){
     $table.appendChild($message);
     $message.appendChild($text);
     $message.appendChild($playAgainButton);
-  }, 1000);
+  }, 400);
 }
 
 function checkOutColors(array) {
@@ -73,6 +88,8 @@ function checkOutColors(array) {
 }
 
 function createPlayingField($table) {
+  let $message = document.querySelector('.message');
+  $message.remove();
   for (let i = 0; i < 8; i++) {
     const $row = createElement('div', 'row');
     $table.appendChild($row);
@@ -177,4 +194,4 @@ function createPlayingField($table) {
     }
   }
 
-  createPlayingField($table);
+  startMessage($table);

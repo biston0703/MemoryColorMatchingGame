@@ -36,12 +36,6 @@ input {
     appearance: none;
 }
 
-input:disabled {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 .dot {
     cursor: pointer;
     height: 4rem;
@@ -90,14 +84,22 @@ input:disabled {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 36px;
     transform: translate(-50%, -50%);
-    text-transform: uppercase;
     text-align: center;
     z-index: 1000;
     color: #c1c1c1;
     font-family: 'Comfortaa', cursive;
     text-shadow: 3px 3px 10px #222;
+}
+
+.start {
+    font-size: 28px;
+    line-height: 32px;
+}
+
+.final {
+    font-size: 36px;
+    text-transform: uppercase;
 }
 
 .message button {
@@ -117,7 +119,7 @@ input:disabled {
 }
 
 .message button:hover {
-  background-color: #999;
+    background-color: #999;
 }
 
 @media screen and (max-width: 767px) {
@@ -127,7 +129,12 @@ input:disabled {
     margin: 0.4rem;
 	}
 
-  .message {
+  .start {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .final {
     font-size: 28px;
   }
 }
@@ -139,7 +146,12 @@ input:disabled {
     margin: 0.3rem;
 	}
 
-  .message {
+  .start {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .final {
     font-size: 24px;
   }
 
@@ -157,4 +169,8 @@ input:disabled {
     width: 2rem;
     margin: 0.2rem;
 	}
+
+  .start {
+    font-size: 16px;
+  }
 }
