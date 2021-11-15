@@ -49,7 +49,7 @@ function startMessage($table) {
   let $message = createElement('div', 'message');
   let $text = createElement('p');
   $message.classList.add('start');
-  $text.innerHTML = 'Click any two dots.<br>If they have<br>the same color,<br>they disappear.<br>Otherwise, dots revert<br>to grey color.<br>Try to remove all the dots!';
+  $text.innerHTML = 'Click any two dots.<br>If they have the same color, they disappear.<br>Otherwise, dots revert to grey color.<br>Try to remove all the dots!';
   let $playButton = createElement('button');
   $playButton.innerHTML = 'Play';
   $playButton.setAttribute('onClick', 'createPlayingField($table);');

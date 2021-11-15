@@ -36,6 +36,10 @@ input {
     appearance: none;
 }
 
+input:disabled {
+    opacity: 1;
+}
+
 .dot {
     cursor: pointer;
     height: 4rem;
@@ -94,7 +98,7 @@ input {
 
 .start {
     font-size: 28px;
-    line-height: 32px;
+    line-height: 34px;
 }
 
 .final {
